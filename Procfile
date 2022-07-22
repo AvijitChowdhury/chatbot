@@ -1,1 +1,1 @@
-python chatbot.py && python app.py
+web: gunicorn app:app && python app.py
