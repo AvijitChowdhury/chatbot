@@ -1,6 +1,6 @@
-from flask import Flask, render_template, jsonify, request
-import processor
+from flask import Flask, jsonify, render_template, request
 
+import processor
 
 app = Flask(__name__)
 
@@ -26,4 +26,5 @@ def chatbotResponse():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port='8888', debug=True)
+    #app.run(host='0.0.0.0', port='8888', debug=True)
+    app.run()
