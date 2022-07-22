@@ -1,0 +1,5 @@
+flask
+tensoflow
+keras
+pickle-mixin
+numpy
