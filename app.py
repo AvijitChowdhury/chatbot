@@ -1,3 +1,5 @@
+from distutils.log import debug
+
 from flask import Flask, jsonify, render_template, request
 
 import processor
@@ -27,4 +29,4 @@ def chatbotResponse():
 
 if __name__ == '__main__':
     #app.run(host='0.0.0.0', port='8888', debug=True)
-    app.run()
+    app.run(debug=True)
