@@ -2,6 +2,7 @@ FROM python:3.10
 COPY . /chatbot
 WORKDIR /chatbot
 RUN pip install -r requirements.txt
+RUN python chatbot.py
 COPY . /app
 WORKDIR /app
 EXPOSE $PORT
