@@ -17,9 +17,9 @@ RUN python -m pip install --upgrade pip
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
-RUN python -c "import nltk;nltk.download('omw-1.4');"
-RUN python -c "import nltk;nltk.download('wordnet');"
-RUN python -c "import nltk;nltk.download('punkt');"
+RUN python -m nltk.downloader punkt
+RUN python -m nltk.downloader wordnet
+RUN python -m nltk.downloader omw-1.4
 
 
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
