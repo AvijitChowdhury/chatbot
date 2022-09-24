@@ -10,15 +10,17 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Install pip requirements
-
+RUN mkdir /app
+WORKDIR /app
+COPY . .
+RUN python -m pip install --upgrade pip 
 
 COPY requirements.txt .
-RUN python -m pip install -r requirements.txt
+RUN pip install -r requirements.txt
 RUN python -c "import nltk;nltk.download('omw-1.4');"
 RUN python -c "import nltk;nltk.download('wordnet');"
 RUN python -c "import nltk;nltk.download('punkt');"
-WORKDIR /app
-COPY . .
+
 
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
 # For more info, please refer to https://aka.ms/vscode-docker-python-configure-containers
@@ -26,4 +28,4 @@ COPY . .
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
 
-CMD ["python","app.py"]
+CMD exec gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 0 app:app
